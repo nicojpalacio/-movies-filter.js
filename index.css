@@ -1,38 +1,117 @@
-body{
-    color: #fafafa
+body {
+  color: #fafafa;
 }
 
-.grid-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.nav {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(71, 9, 121, 1) 53%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  grid-column: 1;
+  
+    display: flex;
+    justify-content: center;
     
 }
-
-.nav{
-    background-color: #181818;
-    grid-column: 1/4;
+.nav h1 {
+    animation: text-pulse 2s ease-in-out infinite alternate;
 }
 
-.main-container{
-    background-color: #fafafa;
-    grid-column: 1/4;
-    color: #181818;
-}
-
-.nested-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-.box{
-    border: #181818 solid 3px;
-    justify-self: center;
-    align-self: center;
+@keyframes text-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 
-.footer{
-    background-color: #181818;
-    grid-column: 1/4;
+.main-container {
+  background-color:#ab9027dc;
+  grid-column: 1;
+  color: #181818;
+  padding: 20px;
+  height: 100%;
+  flex: 1;
 }
 
+.nested-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
+  gap: 20px;
+}
+
+.box {
+  min-width: 200px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #c1c0aa;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+}
+
+.footer {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(71, 9, 121, 1) 53%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  grid-column: 1;
+  margin-top: auto;
+  display: flex;
+    justify-content: center;
+    animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.nav h1 {
+  color: #ffffff;
+}
+
+.max-width{
+    max-width: 200px;
+}
+
+.font-size{
+    font-size: xx-small;
+}
+
+.color-button{
+    background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(71, 9, 121, 1) 53%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}

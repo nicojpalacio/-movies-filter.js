@@ -363,6 +363,7 @@ const movies = [
   },
 ];
 
+const mapMovieFiltered = document.getElementById("mapMovieFiltered");
 const inputSubmit = document.getElementById("form");
 inputSubmit.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -375,24 +376,38 @@ inputSubmit.addEventListener("submit", (e) => {
 });
 
 function filterMovies({ users, movies, userId, fromDate, toDate, rate }) {
-  const moviefiltered = movies.filter(
-    (movie) =>
-      movie.rate > Number(rate) &&
-      (userId === "" || movie.userId === Number(userId))
-  );
+  const fromDateOb = new Date(fromDate); 
+  const toDateOb = new Date(toDate); 
 
+  const moviefiltered = movies.filter((movie) => {
+    const movieDate = new Date(movie.watched); 
+    return (
+      movie.rate > Number(rate) &&
+      (userId === "" || movie.userId === Number(userId)) &&
+      movieDate >= fromDateOb && 
+      movieDate <= toDateOb
+    );
+  });
   const newArrayMovies = moviefiltered.map((movie) => {
     const user = users.find((u) => u.id === Number(movie.userId));
 
-    return {
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      fullAddress: `${user.address.street} - ${user.address.city}`,
-      company: user.company.name,
-      movie: movie.title,
-      rate: movie.rate,
-    };
+    return `
+    <div class="card max-width m-2" >
+      <img src="${movie.image}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${movie.title}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item font-size">Rate: ${movie.rate}</li>
+        <li class="list-group-item font-size">Company: ${user.company.name}</li>
+        <li class="list-group-item font-size">Id: ${user.id}</li>
+        <li class="list-group-item font-size">Username: ${user.username}</li>
+        <li class="list-group-item font-size">Email: ${user.email}</li>
+        <li class="list-group-item font-size">FullAddress: ${user.address.street} - ${user.address.city}</li>
+      </ul>
+    </div>
+  `;
   });
-  console.log(newArrayMovies);
+  mapMovieFiltered.innerHTML = newArrayMovies.join('');
+  
 }
