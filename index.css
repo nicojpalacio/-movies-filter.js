@@ -1,0 +1,38 @@
+body{
+    color: #fafafa
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+
+.nav{
+    background-color: #181818;
+    grid-column: 1/4;
+}
+
+.main-container{
+    background-color: #fafafa;
+    grid-column: 1/4;
+    color: #181818;
+}
+
+.nested-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.box{
+    border: #181818 solid 3px;
+    justify-self: center;
+    align-self: center;
+}
+
+
+.footer{
+    background-color: #181818;
+    grid-column: 1/4;
+}
+
