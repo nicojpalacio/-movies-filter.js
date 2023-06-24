@@ -382,7 +382,7 @@ function filterMovies({ users, movies, userId, fromDate, toDate, rate }) {
   const moviefiltered = movies.filter((movie) => {
     const movieDate = new Date(movie.watched); 
     return (
-      movie.rate > Number(rate) &&
+      movie.rate >= Number(rate) &&
       (userId === "" || movie.userId === Number(userId)) &&
       movieDate >= fromDateOb && 
       movieDate <= toDateOb
